@@ -24,11 +24,12 @@ public class Interpolacja2_0 {
 
             }
         }
-
-        for(int i=0; i<n; i++){
-            System.out.print("|Kol " + i);
+        System.out.print("|  xi  | f(xi)");
+        for(int i=1; i<n; i++){
+            System.out.print("|Rząd " + i);
         }
-        System.out.println();
+        System.out.print("|\n");
+        System.out.println("  - - - - - - - - - - - - - - - - - - - - ");
 
         for(int i = 0; i < n; i++){
             for(int j = 0; j < n+1-i; j++) {
