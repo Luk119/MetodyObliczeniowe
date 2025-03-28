@@ -9,10 +9,8 @@ public class FunkcjeSklejane {
         double fprimStart = 1;
         double fprimEnd = 1;
 
-        // Punkty do interpolacji
-        double[] szukaneWartosci = {1, 7};
+        double[] szukaneWartosci = {2, 6};
 
-        // Oblicz współczynniki splajnu
         double[] a = Arrays.copyOf(y, y.length);
         double[] b = new double[y.length];
         double[] c = new double[y.length];
