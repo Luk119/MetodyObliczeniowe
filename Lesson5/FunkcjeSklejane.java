@@ -1,30 +1,42 @@
 package Lesson5;
 
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class FunkcjeSklejane {
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
         double[] x = {1, 3, 5, 7};
         double[] y = {1, 8, 9, 17};
         double fprimStart = 1;
         double fprimEnd = 1;
 
-        double[] szukaneWartosci = {1, 1};
+        System.out.print("Podaj liczbę wartości do obliczenia: ");
+        int n = scanner.nextInt();
+        double[] szukaneWartosci = new double[n];
+
+        for (int i = 0; i < n; i++) {
+            System.out.print("Podaj " + i+1 + " wartość x: ");
+            szukaneWartosci[i] = scanner.nextDouble();
+        }
 
         double[] a = Arrays.copyOf(y, y.length);
         double[] b = new double[y.length];
         double[] c = new double[y.length];
         double[] d = new double[y.length];
 
-        obliczSpline(x, y, fprimStart, fprimEnd, a, b, c, d);
+        liczSklejane(x, y, fprimStart, fprimEnd, a, b, c, d);
 
         for (double val : szukaneWartosci) {
-            double wynik = wartoscSpline(val, x, a, b, c, d);
+            double wynik = sklejane(val, x, a, b, c, d);
             System.out.printf("S_3(%.1f) = %.3f\n", val, wynik);
         }
+
+        scanner.close();
     }
 
-    public static void obliczSpline(double[] x, double[] y, double fprimStart, double fprimEnd, double[] a, double[] b, double[] c, double[] d) {
+    public static void liczSklejane(double[] x, double[] y, double fprimStart, double fprimEnd, double[] a, double[] b, double[] c, double[] d) {
         int n = x.length - 1;
         double[] h = new double[n];
         double[] alpha = new double[n + 1];
@@ -65,7 +77,7 @@ public class FunkcjeSklejane {
         }
     }
 
-    public static double wartoscSpline(double xVal, double[] x, double[] a, double[] b, double[] c, double[] d) {
+    public static double sklejane(double xVal, double[] x, double[] a, double[] b, double[] c, double[] d) {
         int i = x.length - 2;
         while (i >= 0 && xVal < x[i]) {
             i--;
