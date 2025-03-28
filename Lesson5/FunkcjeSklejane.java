@@ -9,16 +9,16 @@ public class FunkcjeSklejane {
 
         double[] x = {1, 3, 5, 7};
         double[] y = {1, 8, 9, 17};
-        double fprimStart = 1;
-        double fprimEnd = 1;
+        double fprimS = 1;
+        double fprimE = 1;
 
         System.out.print("Podaj liczbę wartości do obliczenia: ");
         int n = scanner.nextInt();
-        double[] szukaneWartosci = new double[n];
+        double[] szukane = new double[n];
 
         for (int i = 0; i < n; i++) {
             System.out.print("Podaj " + i+1 + " wartość x: ");
-            szukaneWartosci[i] = scanner.nextDouble();
+            szukane[i] = scanner.nextDouble();
         }
 
         double[] a = Arrays.copyOf(y, y.length);
@@ -26,9 +26,9 @@ public class FunkcjeSklejane {
         double[] c = new double[y.length];
         double[] d = new double[y.length];
 
-        liczSklejane(x, y, fprimStart, fprimEnd, a, b, c, d);
+        liczSklejane(x, y, fprimS, fprimE, a, b, c, d);
 
-        for (double val : szukaneWartosci) {
+        for (double val : szukane) {
             double wynik = sklejane(val, x, a, b, c, d);
             System.out.printf("S_3(%.1f) = %.3f\n", val, wynik);
         }
@@ -36,7 +36,7 @@ public class FunkcjeSklejane {
         scanner.close();
     }
 
-    public static void liczSklejane(double[] x, double[] y, double fprimStart, double fprimEnd, double[] a, double[] b, double[] c, double[] d) {
+    public static void liczSklejane(double[] x, double[] y, double fprimS, double fprimE, double[] a, double[] b, double[] c, double[] d) {
         int n = x.length - 1;
         double[] h = new double[n];
         double[] alpha = new double[n + 1];
@@ -45,8 +45,8 @@ public class FunkcjeSklejane {
             h[i] = x[i + 1] - x[i];
         }
 
-        alpha[0] = 3 * (y[1] - y[0]) / h[0] - 3 * fprimStart;
-        alpha[n] = 3 * fprimEnd - 3 * (y[n] - y[n - 1]) / h[n - 1];
+        alpha[0] = 3 * (y[1] - y[0]) / h[0] - 3 * fprimS;
+        alpha[n] = 3 * fprimE - 3 * (y[n] - y[n - 1]) / h[n - 1];
 
         for (int i = 1; i < n; i++) {
             alpha[i] = 3 / h[i] * (y[i + 1] - y[i]) - 3 / h[i - 1] * (y[i] - y[i - 1]);
