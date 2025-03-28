@@ -9,7 +9,7 @@ public class FunkcjeSklejane {
         double fprimStart = 1;
         double fprimEnd = 1;
 
-        double[] szukaneWartosci = {2, 6};
+        double[] szukaneWartosci = {1, 1};
 
         double[] a = Arrays.copyOf(y, y.length);
         double[] b = new double[y.length];
