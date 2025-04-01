@@ -7,7 +7,7 @@ public class Main {
         double p = 3;
 
         double result = interpolacjaNewtona(x, y, p);
-        System.out.println("Interpolowana wartość w punkcie." + result);
+        System.out.println("Wartość w twoim punkcie = " + result);
     }
 
     public static double interpolacjaNewtona(double[] x, double[] y, double p) {
