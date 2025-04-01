@@ -7,33 +7,33 @@ public class Main {
         double p = 3;
 
         double result = interpolacjaNewtona(x, y, p);
-        System.out.println("Interpolowana wartość w X=" + p + " wynosi: " + result);
+        System.out.println("Interpolowana wartość w punkcie." + result);
     }
 
     public static double interpolacjaNewtona(double[] x, double[] y, double p) {
         int n = x.length;
-        double h = x[1] - x[0]; // Stała różnica argumentów
+        double m = x[1] - x[0];
         double[][] delta = new double[n][n];
 
-        // Wypełnienie pierwszej kolumny tablicy różnic wartościami funkcji
+        //Pierwsza kolumna = różnice wartości funkcji
         for (int i = 0; i < n; i++) {
             delta[i][0] = y[i];
         }
 
-        // Obliczanie różnic progresywnych
+        //Różnice progresywne
         for (int j = 1; j < n; j++) {
             for (int i = 0; i < n - j; i++) {
                 delta[i][j] = delta[i + 1][j - 1] - delta[i][j - 1];
             }
         }
 
-        // Obliczanie wartości wielomianu interpolacyjnego
+        //Wielomian interpolacyjny
         double sum = y[0];
         double term;
         double product = 1;
         for (int k = 1; k < n; k++) {
             product *= (p - x[k - 1]);
-            term = delta[0][k] / (silnia(k) * Math.pow(h, k));
+            term = delta[0][k] / (silnia(k) * Math.pow(m, k));
             sum += term * product;
         }
 
