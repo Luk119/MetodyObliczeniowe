@@ -7,10 +7,10 @@ public class FunkcjeSklejane {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        double[] x = {1, 3, 5, 7};
-        double[] y = {1, 8, 9, 17};
-        double fprimS = 1;
-        double fprimE = 1;
+        double[] x = {-4, -2, 0, 2, 4};
+        double[] y = {-618, -42, -2, -18, -378};
+        double fprimS = 598;
+        double fprimE = -410;
 
         System.out.print("Podaj liczbę wartości do obliczenia: ");
         int n = scanner.nextInt();
