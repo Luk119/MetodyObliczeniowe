@@ -33,19 +33,17 @@ public class Main {
         double product = 1;
         for (int k = 1; k < n; k++) {
             product *= (p - x[k - 1]);
-            term = delta[0][k] / (factorial(k) * Math.pow(h, k));
+            term = delta[0][k] / (silnia(k) * Math.pow(h, k));
             sum += term * product;
         }
 
         return sum;
     }
 
-    // Funkcja obliczająca silnię
-    private static int factorial(int num) {
-        int fact = 1;
-        for (int i = 2; i <= num; i++) {
-            fact *= i;
+    private static int silnia(int num) {
+        if(num == 0 || num == 1) {
+            return 1;
         }
-        return fact;
+            return silnia(num - 1) * num;
     }
 }
