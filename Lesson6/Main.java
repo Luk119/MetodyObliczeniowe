@@ -2,6 +2,50 @@ package Lesson6;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("hi");
+        double[] x = {-4, -2, 0, 2, 4};
+        double[] y = {-618, -42, -2, -18, -378};
+        double p = 3;
+
+        double result = interpolacjaNewtona(x, y, p);
+        System.out.println("Interpolowana wartość w X=" + p + " wynosi: " + result);
+    }
+
+    public static double interpolacjaNewtona(double[] x, double[] y, double p) {
+        int n = x.length;
+        double h = x[1] - x[0]; // Stała różnica argumentów
+        double[][] delta = new double[n][n];
+
+        // Wypełnienie pierwszej kolumny tablicy różnic wartościami funkcji
+        for (int i = 0; i < n; i++) {
+            delta[i][0] = y[i];
+        }
+
+        // Obliczanie różnic progresywnych
+        for (int j = 1; j < n; j++) {
+            for (int i = 0; i < n - j; i++) {
+                delta[i][j] = delta[i + 1][j - 1] - delta[i][j - 1];
+            }
+        }
+
+        // Obliczanie wartości wielomianu interpolacyjnego
+        double sum = y[0];
+        double term;
+        double product = 1;
+        for (int k = 1; k < n; k++) {
+            product *= (p - x[k - 1]);
+            term = delta[0][k] / (factorial(k) * Math.pow(h, k));
+            sum += term * product;
+        }
+
+        return sum;
+    }
+
+    // Funkcja obliczająca silnię
+    private static int factorial(int num) {
+        int fact = 1;
+        for (int i = 2; i <= num; i++) {
+            fact *= i;
+        }
+        return fact;
     }
 }
