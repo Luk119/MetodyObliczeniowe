@@ -1,4 +1,5 @@
 package Lesson7;
+
 // Moja calka: 19)
 public class CalkowanieNumeryczne {
 
@@ -21,40 +22,40 @@ public class CalkowanieNumeryczne {
     }
 
     public static double metodaSimpsona(double a, double b, int n) {
-        if (n % 2 != 0) {
-            throw new IllegalArgumentException("n musi być parzyste");
+        try {
+            if (n % 2 != 0) {
+                throw new IllegalArgumentException("Error. Ilość przedziałów musi być parzysta");
+            }
+
+            double h = (b - a) / n;
+            double sum = f(a) + f(b);
+
+            for (int i = 1; i < n; i += 2) {
+                double x = a + i * h;
+                sum += 4 * f(x);
+            }
+
+            for (int i = 2; i < n; i += 2) {
+                double x = a + i * h;
+                sum += 2 * f(x);
+            }
+            return (sum * h) / 3;
+
+        }catch(Exception e){
+            e.printStackTrace();
         }
-
-        double h = (b - a) / n;
-        double sum = f(a) + f(b);
-
-        // Sum for odd terms (4*)
-        for (int i = 1; i < n; i += 2) {
-            double x = a + i * h;
-            sum += 4 * f(x);
-        }
-
-        // Sum for even terms (2*)
-        for (int i = 2; i < n; i += 2) {
-            double x = a + i * h;
-            sum += 2 * f(x);
-        }
-
-        return sum * h / 3;
+        return 0;
     }
 
     public static void main(String[] args) {
         double a = 0.5;
         double b = 1.8;
-        int n = 1000; // Number of intervals
+        int n = 1000000;
 
-        System.out.println("Ca of cos(x² + 0.7)/(1.1 + sin(0.6x + 0.2)) from " + a + " to " + b);
-        System.out.println("Using " + n + " intervals:");
+        System.out.println("Calkowanie numeryczne cos(x² + 0.7)/(1.1 + sin(0.6x + 0.2)) od " + a + " do " + b);
+z
 
-        double trapezoidalResult = metodaTrapezow(a, b, n);
-        System.out.println("Metoda Trapezów: " + trapezoidalResult);
-
-        double simpsonsResult = metodaSimpsona(a, b, n);
-        System.out.println("Metoda Sipmsona: " + simpsonsResult);
+        System.out.println("Metoda Trapezów: " + metodaTrapezow(a, b, n));
+        System.out.println("Metoda Sipmsona: " + metodaSimpsona(a, b, n));
     }
 }
