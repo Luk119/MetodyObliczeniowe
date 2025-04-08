@@ -53,9 +53,8 @@ public class CalkowanieNumeryczne {
         int n = 1000000;
 
         System.out.println("Calkowanie numeryczne cos(x² + 0.7)/(1.1 + sin(0.6x + 0.2)) od " + a + " do " + b);
-z
 
-        System.out.println("Metoda Trapezów: " + metodaTrapezow(a, b, n));
-        System.out.println("Metoda Sipmsona: " + metodaSimpsona(a, b, n));
+        System.out.println("Metodą Trapezów: " + metodaTrapezow(a, b, n));
+        System.out.println("Metodą Sipmsona: " + metodaSimpsona(a, b, n));
     }
 }
