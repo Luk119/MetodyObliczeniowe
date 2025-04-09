@@ -1,4 +1,5 @@
 package Lesson5;
+// metoda z zajęć do poprawy
 
 import java.util.Arrays;
 import java.util.Scanner;
