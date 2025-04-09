@@ -1,5 +1,5 @@
 package Lesson4;
-
+// wysłać wynik końcowy do b)
 import java.util.Locale;
 import java.util.Scanner;
 
