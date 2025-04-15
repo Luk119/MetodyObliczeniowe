@@ -2,7 +2,7 @@ package Lesson5;
 
 import java.util.Scanner;
 
-public class FunkcjeSklejane2_0 {
+public class test {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -11,10 +11,10 @@ public class FunkcjeSklejane2_0 {
         double[] yValues = {-618, -42, -2, -18, -378};
         double[] derivatives = {598, -410};
 
-        System.out.print("Podaj wartość x: ");
-        double x = scanner.nextDouble();
+        System.out.print("Podaj wartość x, dla której chcesz obliczyć S(x): ");
+        double xToCalculate = scanner.nextDouble();
 
-        System.out.println("S(" + x + ") = " + splineFunction(xValues, yValues, derivatives, x));
+        System.out.println("S(" + xToCalculate + ") = " + splineFunction(xValues, yValues, derivatives, xToCalculate));
 
         scanner.close();
     }
