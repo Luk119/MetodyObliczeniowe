@@ -42,6 +42,7 @@ public class Interpolacja2_0 {
             System.out.println("|");
         }
 
+
         System.out.println("\nPodaj punkt x, dla którego chcesz obliczyć wartość wielomianu:");
         double x = scan.nextDouble();
         double wynik = obliczWartoscWielomianu(iloraz, x, n);
@@ -49,7 +50,7 @@ public class Interpolacja2_0 {
     }
 
     public static double obliczWartoscWielomianu(double[][] iloraz, double x, int n) {
-        double wynik = iloraz[0][1];
+        double wynik = iloraz[0][1]; // f(x0)
         double iloczyn = 1.0;
 
         for (int i = 1; i < n; i++) {
