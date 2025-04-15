@@ -1,5 +1,5 @@
 package Lesson8;
-
+//
 import java.util.Scanner;
 
 public class Kwadratura {
