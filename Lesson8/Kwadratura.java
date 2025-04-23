@@ -65,7 +65,7 @@ public class Kwadratura {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Podaj dolną granicę całkowania a: ");
+        System.out.print("Podaj dolną granicę całki a: ");
         double a = scanner.nextDouble();
 
         System.out.print("Podaj górną granicę całkowania b: ");
