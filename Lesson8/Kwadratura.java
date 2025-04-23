@@ -80,7 +80,6 @@ public class Kwadratura {
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
-
         scanner.close();
     }
 }
