@@ -68,7 +68,7 @@ public class Kwadratura {
         System.out.print("Podaj dolną granicę całki a: ");
         double a = scanner.nextDouble();
 
-        System.out.print("Podaj górną granicę całkowania b: ");
+        System.out.print("Podaj górną granicę całki b: ");
         double b = scanner.nextDouble();
 
         System.out.print("Podaj liczbę węzłów n (2, 4, 6, 8, 10, 16): ");
