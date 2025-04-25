@@ -1,5 +1,4 @@
 package Lesson8;
-//
 import java.util.Scanner;
 
 public class Kwadratura {
@@ -71,7 +70,7 @@ public class Kwadratura {
         System.out.print("Podaj górną granicę całki b: ");
         double b = scanner.nextDouble();
 
-        System.out.print("Podaj liczbę węzłów n (2, 4, 6, 8, 10, 16): ");
+        System.out.print("Podaj liczbę węzłów (2, 4, 6, 8, 10, 16): ");
         int n = scanner.nextInt();
 
         try {
