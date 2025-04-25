@@ -48,7 +48,7 @@ public class Kwadratura {
                         0.1246289713, 0.0951585116, 0.0622535239, 0.0271524594};
                 break;
             default:
-                throw new IllegalArgumentException("Dozwolone wartości n to: 2, 4, 6, 8, 10, 16");
+                throw new IllegalArgumentException("Error. Dozwolone wartości n to: 2, 4, 6, 8, 10, 16");
         }
 
         double result = 0.0;
