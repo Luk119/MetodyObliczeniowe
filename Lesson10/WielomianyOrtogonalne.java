@@ -54,18 +54,21 @@ public class WielomianyOrtogonalne {
         Scanner scanner = new Scanner(System.in);
         double a = -1.0;
         double b = 1.0;
-        double x = 0.25;
-        int liczbaPrzedzialow = 100;
+        int przedzialy = 1000;
 
         System.out.print("Podaj stopień n: ");
         int n = scanner.nextInt();
+
+
+        System.out.print("Podaj punkt x: ");
+        double x = scanner.nextDouble();
         scanner.close();
 
         double[] wspolczynniki = new double[n + 1];
 
         for (int i = 0; i <= n; i++) {
-            double lambda = metodaTrapezow2(a, b, liczbaPrzedzialow, i, true);
-            double calka = metodaTrapezow2(a, b, liczbaPrzedzialow, i, false);
+            double lambda = metodaTrapezow2(a, b, przedzialy, i, true);
+            double calka = metodaTrapezow2(a, b, przedzialy, i, false);
             wspolczynniki[i] = calka / lambda;
         }
 
