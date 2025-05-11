@@ -31,24 +31,16 @@ public class WielomianyOrtogonalne {
         }
     }
 
-    public static double trapezoidalIntegration(int n, double a, double b, double legendreIndex, boolean isLambda) {
+    public static double metodaTrapezow2(double a, double b, int n) {
         double h = (b - a) / n;
-        double sum = 0.0;
+        double sum = 0.5 * (f(a) + f(b));
 
-        for (int i = 0; i <= n; i++) {
+        for (int i = 1; i < n; i++) {
             double x = a + i * h;
-            double legendre = legendrePolynomial((int)legendreIndex, x);
-
-            double value = isLambda ? legendre * legendre : legendre * f(x);
-
-            if (i == 0 || i == n) {
-                sum += 0.5 * value;
-            } else {
-                sum += value;
-            }
+            sum += f(x);
         }
 
-        return h * sum;
+        return sum * h;
     }
 
     public static void main(String[] args) {
@@ -65,8 +57,8 @@ public class WielomianyOrtogonalne {
         double[] coefficients = new double[n + 1];
 
         for (int i = 0; i <= n; i++) {
-            double lambda_i = trapezoidalIntegration(numIntervals, a, b, i, true);
-            double integral = trapezoidalIntegration(numIntervals, a, b, i, false);
+            double lambda_i = metodaTrapezow2(a, b, numIntervals);
+            double integral = metodaTrapezow2(a, b, numIntervals);
             coefficients[i] = integral / lambda_i;
         }
 
@@ -78,7 +70,7 @@ public class WielomianyOrtogonalne {
         double exactValue = f(x);
 
         System.out.println("\nWyniki aproksymacji dla n = " + n + ":");
-        System.out.println("Współczynniki Ci:");
+        System.out.println("Współczynniki wielomianu aproksymującego:");
         for (int i = 0; i <= n; i++) {
             System.out.printf("C%d = %.6f\n", i, coefficients[i]);
         }
