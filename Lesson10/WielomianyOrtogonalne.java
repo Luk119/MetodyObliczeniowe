@@ -1,6 +1,7 @@
 package Lesson10;
 import java.util.Scanner;
 // done
+// 17)
 public class WielomianyOrtogonalne {
     public static double funkcja(double x) {
         return Math.sqrt(2 * Math.pow(x, 3) - x + 9);
