@@ -2,45 +2,52 @@ package Lesson10;
 import java.util.Scanner;
 
 public class WielomianyOrtogonalne {
-    public static double f(double x) {
+    public static double funkcja(double x) {
         return Math.sqrt(2 * Math.pow(x, 3) - x + 9);
     }
 
-    public static double legendrePolynomial(int n, double x) {
-        if (n == 0) {
+    public static double wielomianLegendre(int stopien, double x) {
+        if (stopien == 0) {
             return 1.0;
-        } else if (n == 1) {
+        } else if (stopien == 1) {
             return x;
         } else {
-            double pNMinus1 = x;
-            double pNMinus2 = 1.0;
-            double pN = 0.0;
+            double poprzedni1 = x;
+            double poprzedni2 = 1.0;
+            double aktualny = 0.0;
 
-            for (int currentN = 2; currentN <= n; currentN++) {
-                double part1 = 1.0 / currentN;
-                double part2 = (2.0 * (currentN - 1) + 1.0) * x * pNMinus1;
-                double part3 = ((currentN - 1.0) / currentN) * pNMinus2;
+            for (int i = 2; i <= stopien; i++) {
+                double czesc1 = 1.0 / i;
+                double czesc2 = (2.0 * (i - 1) + 1.0) * x * poprzedni1;
+                double czesc3 = ((i - 1.0) / i) * poprzedni2;
 
-                pN = part1 * (part2 - currentN * part3);
+                aktualny = czesc1 * (czesc2 - i * czesc3);
 
-                pNMinus2 = pNMinus1;
-                pNMinus1 = pN;
+                poprzedni2 = poprzedni1;
+                poprzedni1 = aktualny;
             }
 
-            return pN;
+            return aktualny;
         }
     }
 
-    public static double metodaTrapezow2(double a, double b, int n) {
+    public static double metodaTrapezow2(double a, double b, int n, int indeks, boolean jestLambda) {
         double h = (b - a) / n;
-        double sum = 0.5 * (f(a) + f(b));
+        double suma = 0.0;
 
-        for (int i = 1; i < n; i++) {
+        for (int i = 0; i <= n; i++) {
             double x = a + i * h;
-            sum += f(x);
+            double legendre = wielomianLegendre(indeks, x);
+            double wartosc = jestLambda ? legendre * legendre : legendre * funkcja(x);
+
+            if (i == 0 || i == n) {
+                suma += 0.5 * wartosc;
+            } else {
+                suma += wartosc;
+            }
         }
 
-        return sum * h;
+        return suma * h;
     }
 
     public static void main(String[] args) {
@@ -48,44 +55,43 @@ public class WielomianyOrtogonalne {
         double a = -1.0;
         double b = 1.0;
         double x = 0.25;
-        int numIntervals = 100;
+        int liczbaPrzedzialow = 100;
 
-        System.out.print("Podaj stopień wielomianu aproksymującego n: ");
+        System.out.print("Podaj stopień n: ");
         int n = scanner.nextInt();
         scanner.close();
 
-        double[] coefficients = new double[n + 1];
+        double[] wspolczynniki = new double[n + 1];
 
         for (int i = 0; i <= n; i++) {
-            double lambda_i = metodaTrapezow2(a, b, numIntervals);
-            double integral = metodaTrapezow2(a, b, numIntervals);
-            coefficients[i] = integral / lambda_i;
+            double lambda = metodaTrapezow2(a, b, liczbaPrzedzialow, i, true);
+            double calka = metodaTrapezow2(a, b, liczbaPrzedzialow, i, false);
+            wspolczynniki[i] = calka / lambda;
         }
 
-        double approximation = 0.0;
+        double aproksymacja = 0.0;
         for (int i = 0; i <= n; i++) {
-            approximation += coefficients[i] * legendrePolynomial(i, x);
+            aproksymacja += wspolczynniki[i] * wielomianLegendre(i, x);
         }
 
-        double exactValue = f(x);
+        double dokladnaWartosc = funkcja(x);
 
-        System.out.println("\nWyniki aproksymacji dla n = " + n + ":");
-        System.out.println("Współczynniki wielomianu aproksymującego:");
+        System.out.println("\nWspółczynniki wielomianu:");
         for (int i = 0; i <= n; i++) {
-            System.out.printf("C%d = %.6f\n", i, coefficients[i]);
+            System.out.printf("C%d = %.6f\n", i, wspolczynniki[i]);
         }
 
-        System.out.println("\nWartość wielomianu aproksymującego w punkcie x = " + x + ": " + approximation);
-        System.out.println("Dokładna wartość funkcji w punkcie x = " + x + ": " + exactValue);
-        System.out.println("Błąd bezwzględny: " + Math.abs(exactValue - approximation));
+        System.out.println("\nWartość wielomianu w punkcie x = " + x + ": " + aproksymacja);
+        System.out.println("Dokładna wartość funkcji w punkcie x = " + x + ": " + dokladnaWartosc);
+        System.out.println("Błąd bezwzględny: " + Math.abs(dokladnaWartosc - aproksymacja));
 
-        System.out.println("\nPostać wielomianu aproksymującego:");
-        System.out.print("g(x) = " + coefficients[0]);
+        System.out.println("\nPostać wielomianu:");
+        System.out.print("g(x) = " + wspolczynniki[0]);
         for (int i = 1; i <= n; i++) {
-            if (coefficients[i] >= 0) {
-                System.out.print(" + " + coefficients[i] + " * P" + i + "(x)");
+            if (wspolczynniki[i] >= 0) {
+                System.out.print(" + " + wspolczynniki[i] + " * P" + i + "(x)");
             } else {
-                System.out.print(" - " + Math.abs(coefficients[i]) + " * P" + i + "(x)");
+                System.out.print(" - " + Math.abs(wspolczynniki[i]) + " * P" + i + "(x)");
             }
         }
         System.out.println();
