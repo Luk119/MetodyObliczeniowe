@@ -52,13 +52,16 @@ public class WielomianyOrtogonalne {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        double a = -1.0;
-        double b = 1.0;
         int przedzialy = 1000;
 
         System.out.print("Podaj stopień n: ");
         int n = scanner.nextInt();
 
+        System.out.print("Podaj przedział dolny a: ");
+        double a = scanner.nextDouble();
+
+        System.out.print("Podaj przedział górny b: ");
+        double b = scanner.nextDouble();
 
         System.out.print("Podaj punkt x: ");
         double x = scanner.nextDouble();
@@ -77,26 +80,13 @@ public class WielomianyOrtogonalne {
             aproksymacja += wspolczynniki[i] * wielomianLegendre(i, x);
         }
 
-        double dokladnaWartosc = funkcja(x);
-
         System.out.println("\nWspółczynniki wielomianu:");
         for (int i = 0; i <= n; i++) {
             System.out.printf("C%d = %.6f\n", i, wspolczynniki[i]);
         }
 
         System.out.println("\nWartość wielomianu w punkcie x = " + x + ": " + aproksymacja);
-        System.out.println("Dokładna wartość funkcji w punkcie x = " + x + ": " + dokladnaWartosc);
-        System.out.println("Błąd bezwzględny: " + (aproksymacja - dokladnaWartosc));
-
-        System.out.println("\nPostać wielomianu:");
-        System.out.print("g(x) = " + wspolczynniki[0]);
-        for (int i = 1; i <= n; i++) {
-            if (wspolczynniki[i] >= 0) {
-                System.out.print(" + " + wspolczynniki[i] + " * P" + i + "(x)");
-            } else {
-                System.out.print(" - " + Math.abs(wspolczynniki[i]) + " * P" + i + "(x)");
-            }
-        }
-        System.out.println();
+        System.out.println("Dokładna wartość funkcji w punkcie x = " + x + ": " + funkcja(x));
+        System.out.println("Błąd bezwzględny: " + (aproksymacja - funkcja(x)));
     }
 }
