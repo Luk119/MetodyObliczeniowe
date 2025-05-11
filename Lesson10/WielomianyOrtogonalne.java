@@ -86,7 +86,7 @@ public class WielomianyOrtogonalne {
 
         System.out.println("\nWartość wielomianu w punkcie x = " + x + ": " + aproksymacja);
         System.out.println("Dokładna wartość funkcji w punkcie x = " + x + ": " + dokladnaWartosc);
-        System.out.println("Błąd bezwzględny: " + Math.abs(dokladnaWartosc - aproksymacja));
+        System.out.println("Błąd bezwzględny: " + (aproksymacja - dokladnaWartosc));
 
         System.out.println("\nPostać wielomianu:");
         System.out.print("g(x) = " + wspolczynniki[0]);
