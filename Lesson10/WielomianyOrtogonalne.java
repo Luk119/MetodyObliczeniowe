@@ -3,6 +3,7 @@ import java.util.Scanner;
 // done
 // 17)
 public class WielomianyOrtogonalne {
+
     public static double funkcja(double x) {
         return Math.sqrt(2 * Math.pow(x, 3) - x + 9);
     }
@@ -32,7 +33,7 @@ public class WielomianyOrtogonalne {
         }
     }
 
-    public static double metodaTrapezow2(double a, double b, int n, int indeks, boolean jestLambda) {
+    public static double metodaTrapezow(double a, double b, int n, int indeks, boolean jestLambda) {
         double h = (b - a) / n;
         double suma = 0.0;
 
@@ -71,8 +72,8 @@ public class WielomianyOrtogonalne {
         double[] wspolczynniki = new double[n + 1];
 
         for (int i = 0; i <= n; i++) {
-            double lambda = metodaTrapezow2(a, b, przedzialy, i, true);
-            double calka = metodaTrapezow2(a, b, przedzialy, i, false);
+            double lambda = metodaTrapezow(a, b, przedzialy, i, true);
+            double calka = metodaTrapezow(a, b, przedzialy, i, false);
             wspolczynniki[i] = calka / lambda;
         }
 
@@ -86,8 +87,8 @@ public class WielomianyOrtogonalne {
             System.out.printf("C%d = %.6f\n", i, wspolczynniki[i]);
         }
 
-        System.out.println("\nWartość wielomianu w punkcie x = " + x + ": " + aproksymacja);
-        System.out.println("Dokładna wartość funkcji w punkcie x = " + x + ": " + funkcja(x));
+        System.out.println("\nWartość wielomianu (x = " + x + ") = " + aproksymacja);
+        System.out.println("Dokładna wartość funkcji (x = " + x + ") = " + funkcja(x));
         System.out.println("Błąd bezwzględny: " + (aproksymacja - funkcja(x)));
     }
 }
