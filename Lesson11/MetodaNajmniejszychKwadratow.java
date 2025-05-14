@@ -1,66 +1,68 @@
 package Lesson11;
 
 import java.util.Scanner;
-//not done
+
 public class MetodaNajmniejszychKwadratow {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
 
         System.out.print("Podaj liczbę punktów: ");
-        int m = scanner.nextInt();
+        int nPkt = sc.nextInt();
 
-        double[] x = new double[m];
-        double[] y = new double[m];
+        double[] tabX = new double[nPkt];
+        double[] tabY = new double[nPkt];
 
         System.out.println("Podaj punkty x i y:");
-        for (int i = 0; i < m; i++) {
+        for (int i = 0; i < nPkt; i++) {
             System.out.print("x[" + i + "] = ");
-            x[i] = scanner.nextDouble();
+            tabX[i] = sc.nextDouble();
 
             System.out.print("y[" + i + "] = ");
-            y[i] = scanner.nextDouble();
+            tabY[i] = sc.nextDouble();
         }
 
-        System.out.print("Podaj stopień n: ");
-        int n = scanner.nextInt();
+        System.out.print("Podaj stopień wielomianu: ");
+        int stWiel = sc.nextInt();
 
-        System.out.print("Podaj punkt x, dla którego obliczyć wartość: ");
-        double punkt = scanner.nextDouble();
+        System.out.print("Podaj punkt x do obliczenia: ");
+        double xOblicz = sc.nextDouble();
 
-        double[] wspolczynniki = obliczWspolczynniki(x, y, n);
+        double[] wsp = obliczWspolczynniki(tabX, tabY, stWiel);
 
         System.out.print("Współczynniki wielomianu: ");
-        for(double wsp : wspolczynniki) System.out.print(wsp + " ");
+        for(double w : wsp) {
+            System.out.print(w + " ");
+        }
         System.out.println();
 
-        double wartosc = obliczWartosc(wspolczynniki, punkt);
-        System.out.println("Wartość w punkcie " + punkt + ": " + wartosc);
+        double wynik = obliczWartosc(wsp, xOblicz);
+        System.out.println("Wartość w punkcie " + xOblicz + ": " + wynik);
 
-        scanner.close();
+        sc.close();
     }
 
-    public static double[] obliczWspolczynniki(double[] x, double[] y, int n) {
-        int m = x.length;
-        double[][] S = new double[n + 1][n + 1];
-        double[] T = new double[n + 1];
+    public static double[] obliczWspolczynniki(double[] tabX, double[] tabY, int stWiel) {
+        int n = tabX.length;
+        double[][] S = new double[stWiel + 1][stWiel + 1];
+        double[] T = new double[stWiel + 1];
 
-        for (int k = 0; k <= n; k++) {
-            for (int j = 0; j <= n; j++) {
-                for (int i = 0; i < m; i++) {
-                    S[k][j] += Math.pow(x[i], k + j);
+        for (int k = 0; k <= stWiel; k++) {
+            for (int j = 0; j <= stWiel; j++) {
+                for (int i = 0; i < n; i++) {
+                    S[k][j] += Math.pow(tabX[i], k + j);
                 }
             }
 
-            for (int i = 0; i < m; i++) {
-                T[k] += Math.pow(x[i], k) * y[i];
+            for (int i = 0; i < n; i++) {
+                T[k] += Math.pow(tabX[i], k) * tabY[i];
             }
         }
 
-        return gaussElimination(S, T);
+        return gauss(S, T);
     }
 
-    public static double[] gaussElimination(double[][] A, double[] b) {
+    public static double[] gauss(double[][] A, double[] b) {
         int n = b.length;
 
         for (int p = 0; p < n; p++) {
@@ -71,9 +73,9 @@ public class MetodaNajmniejszychKwadratow {
                 }
             }
 
-            double[] temp = A[p];
+            double[] tmp = A[p];
             A[p] = A[max];
-            A[max] = temp;
+            A[max] = tmp;
 
             double t = b[p];
             b[p] = b[max];
@@ -99,10 +101,10 @@ public class MetodaNajmniejszychKwadratow {
         return x;
     }
 
-    public static double obliczWartosc(double[] wspolczynniki, double x) {
+    public static double obliczWartosc(double[] wsp, double x) {
         double wynik = 0;
-        for (int i = 0; i < wspolczynniki.length; i++) {
-            wynik += wspolczynniki[i] * Math.pow(x, i);
+        for (int i = 0; i < wsp.length; i++) {
+            wynik += wsp[i] * Math.pow(x, i);
         }
         return wynik;
     }
