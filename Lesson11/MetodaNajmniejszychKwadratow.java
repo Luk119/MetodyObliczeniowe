@@ -15,8 +15,8 @@ public class MetodaNajmniejszychKwadratow {
                 Math.sqrt(2*Math.pow(1,3) - 1 + 9)
         };
 
-        int n = 2; // stopień wielomianu aproksymującego
-        double punkt = 0.25; // punkt do obliczenia
+        int n = 2;
+        double punkt = 0.25;
 
         double[] wspolczynniki = obliczWspolczynniki(x, y, n);
         System.out.println("Współczynniki wielomianu: " + Arrays.toString(wspolczynniki));
