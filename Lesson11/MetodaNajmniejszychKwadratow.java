@@ -22,7 +22,7 @@ public class MetodaNajmniejszychKwadratow {
             y[i] = scanner.nextDouble();
         }
 
-        System.out.print("Podaj stopień wielomianu aproksymującego: ");
+        System.out.print("Podaj stopień n: ");
         int n = scanner.nextInt();
 
         System.out.print("Podaj punkt x, dla którego obliczyć wartość: ");
