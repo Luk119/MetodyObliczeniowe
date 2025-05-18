@@ -1,7 +1,5 @@
 package Lesson10;
 import java.util.Scanner;
-// done
-// 17)
 public class WielomianyOrtogonalne {
 
     public static double funkcja(double x) {
