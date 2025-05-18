@@ -1,7 +1,4 @@
 package Lesson11;
-
-import Lesson9.Aproksymacja;
-
 import java.util.Scanner;
 
 public class MetodaNajmniejszychKwadratow {
