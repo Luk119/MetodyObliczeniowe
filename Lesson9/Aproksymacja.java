@@ -1,5 +1,4 @@
 package Lesson9;
-//done
 import java.util.Scanner;
 
 public class Aproksymacja {
