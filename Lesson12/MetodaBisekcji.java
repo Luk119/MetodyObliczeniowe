@@ -25,11 +25,11 @@ public class MetodaBisekcji {
         }
 
         double c = a;
-        int iterations = 0;
+        int i = 0;
 
         while ((b - a) >= epsilon) {
             c = (a + b) / 2;
-            iterations++;
+            i++;
 
             if (f(c) == 0) {
                 break;
@@ -42,6 +42,6 @@ public class MetodaBisekcji {
 
         System.out.printf("Przybliżone rozwiązanie: x = %.5f%n", c);
         System.out.printf("f(x) = %.5f%n", f(c));
-        System.out.println("Liczba iteracji: " + iterations);
+        System.out.println("Liczba iteracji: " + i);
     }
 }
