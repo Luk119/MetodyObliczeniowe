@@ -38,10 +38,10 @@ public class MetodaSiecznych {
         }
 
         double x1;
-        int iterations = 0;
+        int i = 0;
 
         while (true) {
-            iterations++;
+            i++;
 
             if (fixedA) {
                 x1 = x0 - f(x0) * (x0 - a) / (f(x0) - f(a));
@@ -58,7 +58,7 @@ public class MetodaSiecznych {
 
         System.out.printf("Przybliżone rozwiązanie: x = %.5f%n", x1);
         System.out.printf("f(x) = %.5f%n", f(x1));
-        System.out.println("Liczba iteracji: " + iterations);
+        System.out.println("Liczba iteracji: " + i);
     }
 }
 
