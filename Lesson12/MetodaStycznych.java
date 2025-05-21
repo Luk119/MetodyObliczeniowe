@@ -20,7 +20,7 @@ public class MetodaStycznych {
         double epsilon = 0.0001;
 
         if (f(a) * f(b) >= 0) {
-            System.out.println("Warunek konieczny nie jest spełniony. Nie można zastosować metody stycznych.");
+            System.out.println("Błąd: warunek konieczny nie jest spełniony");
             return;
         }
 
