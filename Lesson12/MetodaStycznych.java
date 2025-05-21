@@ -1,5 +1,4 @@
 package Lesson12;
-
 import java.util.Scanner;
 
 public class MetodaStycznych {
@@ -41,11 +40,11 @@ public class MetodaStycznych {
         }
 
         double x1;
-        int iterations = 0;
+        int i = 0;
 
         while (true) {
             x1 = x0 - f(x0) / df(x0);
-            iterations++;
+            i++;
 
             if (Math.abs(f(x1)) < epsilon || Math.abs(x1 - x0) < epsilon) {
                 break;
@@ -56,6 +55,6 @@ public class MetodaStycznych {
 
         System.out.printf("Przybliżone rozwiązanie: x = %.5f%n", x1);
         System.out.printf("f(x) = %.5f%n", f(x1));
-        System.out.println("Liczba iteracji: " + iterations);
+        System.out.println("Liczba iteracji: " + i);
     }
 }
