@@ -1,5 +1,7 @@
 package Lesson12;
 
+import java.util.Scanner;
+
 public class MetodaStycznych {
 
     public static double f(double x) {
@@ -15,9 +17,16 @@ public class MetodaStycznych {
     }
 
     public static void main(String[] args) {
-        double a = -10;
-        double b = -1;
-        double epsilon = 0.0001;
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Podaj dolną granicę przedziłu(a):");
+        double a = sc.nextDouble();
+
+        System.out.println("Podaj górną granicę przedziłu(b):");
+        double b = sc.nextDouble();
+
+        System.out.println("Podaj wartość błędu(ε):");
+        double epsilon = sc.nextDouble();
 
         if (f(a) * f(b) >= 0) {
             System.out.println("Błąd: warunek konieczny nie jest spełniony");
