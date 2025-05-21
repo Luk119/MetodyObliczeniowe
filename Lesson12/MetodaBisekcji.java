@@ -20,7 +20,7 @@ public class MetodaBisekcji {
         double epsilon = sc.nextDouble();
 
         if (f(a) * f(b) >= 0) {
-            System.out.println("Warunek konieczny nie jest spełniony. Nie można użyć metody bisekcji.");
+            System.out.println("Błąd: warunek konieczny nie jest spełniony");
             return;
         }
 
