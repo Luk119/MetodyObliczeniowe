@@ -14,19 +14,14 @@ public class MetodaSiecznych {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("Podaj dolną granicę przedziłu(a): ");
+        System.out.print("Podaj dolną granicę przedziału(a): ");
         double a = sc.nextDouble();
 
-        System.out.print("Podaj górną granicę przedziłu(b): ");
+        System.out.print("Podaj górną granicę przedziału(b): ");
         double b = sc.nextDouble();
 
         System.out.print("Podaj wartość błędu(ε): ");
         double epsilon = sc.nextDouble();
-
-        if (f(a) * f(b) >= 0) {
-            System.out.println("Błąd: warunek konieczny nie jest spełniony");
-            return;
-        }
 
         double x0;
         boolean fixedA = f(a) * d2f(a) > 0;
@@ -42,6 +37,11 @@ public class MetodaSiecznych {
 
         while (true) {
             i++;
+
+            if (f(a) * f(b) >= 0) {
+                System.out.println("Błąd: warunek konieczny nie jest spełniony");
+                return;
+            }
 
             if (fixedA) {
                 x1 = x0 - f(x0) * (x0 - a) / (f(x0) - f(a));
