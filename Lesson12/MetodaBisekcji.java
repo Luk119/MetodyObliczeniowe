@@ -43,7 +43,7 @@ public class MetodaBisekcji {
 
         } while (Math.abs(f(xsr)) >= epsilon);
 
-        System.out.printf("Przybliżone rozwiązanie: x = %.15f%n", xsr);
+        System.out.printf("Wynik: x = %.15f%n", xsr);
         System.out.printf("f(x) = %.15f%n", f(xsr));
         System.out.println("Wykonano iteracji: " + iteracje);
         sc.close();
