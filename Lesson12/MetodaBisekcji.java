@@ -20,16 +20,16 @@ public class MetodaBisekcji {
         double epsilon = sc.nextDouble();
 
         double xsr;
-        int iteracje = 0;
+        int i = 0;
 
         do {
-            xsr = (a + b) / 2;
-            iteracje++;
-
             if (f(a) * f(b) >= 0) {
-                System.out.println("Warunek konieczny nie jest spełniony");
+                System.out.println("Błąd: warunek konieczny nie jest spełniony");
                 return;
             }
+
+            xsr = (a + b) / 2;
+            i++;
 
             if (f(xsr) == 0) {
                 break;
@@ -45,7 +45,7 @@ public class MetodaBisekcji {
 
         System.out.printf("Wynik: x = %.15f%n", xsr);
         System.out.printf("f(x) = %.15f%n", f(xsr));
-        System.out.println("Wykonano iteracji: " + iteracje);
+        System.out.println("Wykonano " + i + " iteracji");
         sc.close();
     }
 }
