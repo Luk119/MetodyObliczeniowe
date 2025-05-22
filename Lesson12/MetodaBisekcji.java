@@ -10,38 +10,42 @@ public class MetodaBisekcji {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Podaj dolną granicę przedziłu(a):");
+        System.out.print("Podaj dolną granicę przedziału(a): ");
         double a = sc.nextDouble();
 
-        System.out.println("Podaj górną granicę przedziłu(b):");
+        System.out.print("Podaj górną granicę przedziału(b): ");
         double b = sc.nextDouble();
 
-        System.out.println("Podaj wartość błędu(ε):");
+        System.out.print("Podaj wartość błędu(ε): ");
         double epsilon = sc.nextDouble();
 
-        if (f(a) * f(b) >= 0) {
-            System.out.println("Błąd: warunek konieczny nie jest spełniony");
-            return;
-        }
+        double xsr;
+        int iteracje = 0;
 
-        double c = a;
-        int i = 0;
+        do {
+            xsr = (a + b) / 2;
+            iteracje++;
 
-        while ((b - a) >= epsilon) {
-            c = (a + b) / 2;
-            i++;
-
-            if (f(c) == 0) {
-                break;
-            } else if (f(c) * f(a) < 0) {
-                b = c;
-            } else {
-                a = c;
+            if (f(a) * f(b) >= 0) {
+                System.out.println("Warunek konieczny nie jest spełniony");
+                return;
             }
-        }
 
-        System.out.printf("Przybliżone rozwiązanie: x = %.5f%n", c);
-        System.out.printf("f(x) = %.5f%n", f(c));
-        System.out.println("Liczba iteracji: " + i);
+            if (f(xsr) == 0) {
+                break;
+            }
+
+            if (f(a) * f(xsr) < 0) {
+                b = xsr;
+            } else {
+                a = xsr;
+            }
+
+        } while (Math.abs(f(xsr)) >= epsilon);
+
+        System.out.printf("Przybliżone rozwiązanie: x = %.15f%n", xsr);
+        System.out.printf("f(x) = %.15f%n", f(xsr));
+        System.out.println("Wykonano iteracji: " + iteracje);
+        sc.close();
     }
 }
