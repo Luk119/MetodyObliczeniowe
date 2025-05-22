@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class Kwadratura {
 
     public static double f(double x) {
-        return (x - 1) / (x * x + x);
+        return Math.cos(x * x + 0.7) / (1.1 + Math.sin(0.6 * x + 0.2));
     }
 
     public static double integrate(double a, double b, int n) {
@@ -75,7 +75,7 @@ public class Kwadratura {
 
         try {
             double result = integrate(a, b, n);
-            System.out.printf("Przybliżona wartość całki: %.8f\n", result);
+            System.out.printf("Przybliżona wartość całki: %.7f\n", result);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
