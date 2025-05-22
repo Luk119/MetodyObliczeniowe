@@ -27,11 +27,6 @@ public class MetodaStycznych {
         System.out.print("Podaj wartość błędu(ε): ");
         double epsilon = sc.nextDouble();
 
-        if (f(a) * f(b) >= 0) {
-            System.out.println("Błąd: warunek konieczny nie jest spełniony");
-            return;
-        }
-
         double x0;
         if (d2f(a) * f(a) > 0) {
             x0 = a;
@@ -48,6 +43,11 @@ public class MetodaStycznych {
 
             if (Math.abs(f(x1)) < epsilon || Math.abs(x1 - x0) < epsilon) {
                 break;
+            }
+
+            if (f(a) * f(b) >= 0) {
+                System.out.println("Błąd: warunek konieczny nie jest spełniony");
+                return;
             }
 
             x0 = x1;
