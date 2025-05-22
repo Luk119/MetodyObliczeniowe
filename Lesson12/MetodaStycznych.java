@@ -38,6 +38,11 @@ public class MetodaStycznych {
         int i = 0;
 
         while (true) {
+            if (f(a) * f(b) >= 0) {
+                System.out.println("Błąd: warunek konieczny nie jest spełniony");
+                return;
+            }
+
             x1 = x0 - f(x0) / df(x0);
             i++;
 
@@ -45,16 +50,11 @@ public class MetodaStycznych {
                 break;
             }
 
-            if (f(a) * f(b) >= 0) {
-                System.out.println("Błąd: warunek konieczny nie jest spełniony");
-                return;
-            }
-
             x0 = x1;
         }
 
         System.out.printf("Wynik: x = %.15f%n", x1);
         System.out.printf("f(x) = %.15f%n", f(x1));
-        System.out.println("Wykonano iteracji: " + i);
+        System.out.println("Wykonano " + i + " iteracji");
     }
 }
