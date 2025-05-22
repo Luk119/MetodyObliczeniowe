@@ -14,13 +14,13 @@ public class MetodaSiecznych {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Podaj dolną granicę przedziłu(a):");
+        System.out.print("Podaj dolną granicę przedziłu(a): ");
         double a = sc.nextDouble();
 
-        System.out.println("Podaj górną granicę przedziłu(b):");
+        System.out.print("Podaj górną granicę przedziłu(b): ");
         double b = sc.nextDouble();
 
-        System.out.println("Podaj wartość błędu(ε):");
+        System.out.print("Podaj wartość błędu(ε): ");
         double epsilon = sc.nextDouble();
 
         if (f(a) * f(b) >= 0) {
@@ -56,9 +56,9 @@ public class MetodaSiecznych {
             x0 = x1;
         }
 
-        System.out.printf("Przybliżone rozwiązanie: x = %.5f%n", x1);
-        System.out.printf("f(x) = %.5f%n", f(x1));
-        System.out.println("Liczba iteracji: " + i);
+        System.out.printf("Przybliżone rozwiązanie: x = %.15f%n", x1);
+        System.out.printf("f(x) = %.15f%n", f(x1));
+        System.out.println("Wykonano iteracji: " + i);
     }
 }
 
