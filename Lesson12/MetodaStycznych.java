@@ -56,5 +56,6 @@ public class MetodaStycznych {
         System.out.printf("Wynik: x = %.15f%n", x1);
         System.out.printf("f(x) = %.15f%n", f(x1));
         System.out.println("Wykonano " + i + " iteracji");
+        sc.close();
     }
 }
