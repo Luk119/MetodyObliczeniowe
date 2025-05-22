@@ -8,6 +8,21 @@ public class CalkowanieNumeryczne {
         double denominator = 1.1 + Math.sin(0.6 * x + 0.2);
         return numerator / denominator;
     }
+    public static double f2(double x){
+        return 1/2 * (3 * x * x - 1) * Math.sqrt(2 * Math.pow(x, 3) - x + 9);
+    }
+
+    public static double metodaTrapezow2(double a, double b, int n) {
+        double h = (b - a) / n;
+        double sum = 0.5 * (f(a) + f(b));
+
+        for (int i = 1; i < n; i++) {
+            double x = a + i * h;
+            sum += f2(x);
+        }
+
+        return sum * h;
+    }
 
     public static double metodaTrapezow(double a, double b, int n) {
         double h = (b - a) / n;
@@ -56,6 +71,8 @@ public class CalkowanieNumeryczne {
 
         System.out.printf("Metodą Trapezów: %.20f%n", metodaTrapezow(a, b, n));
         System.out.printf("Metodą Simpsona: %.20f%n", metodaSimpsona(a, b, n));
+
+        System.out.println("metoda trapezow fun2: " + 5/2 * metodaTrapezow2(-1, 1, n));
 
     }
 }
