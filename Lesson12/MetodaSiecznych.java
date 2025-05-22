@@ -52,7 +52,6 @@ public class MetodaSiecznych {
             if (Math.abs(f(x1)) < epsilon || Math.abs(x1 - x0) < epsilon) {
                 break;
             }
-
             x0 = x1;
         }
 
