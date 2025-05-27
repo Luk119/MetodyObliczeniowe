@@ -3,7 +3,6 @@ package Lesson13;
 public class MetodaIteracjiProstych {
 
     public static void main(String[] args) {
-        // Przykładowy układ równań
         double[][] a = {
                 {10.0, 1.0, 1.0},
                 {2.0, 8.0, 1.0},
@@ -13,10 +12,8 @@ public class MetodaIteracjiProstych {
         double eps = 0.001;
         int maxIter = 100;
 
-        // Rozwiązanie układu równań
         double[] solution = solve(a, b, eps, maxIter);
 
-        // Wyświetlenie wyniku
         System.out.println("\nRozwiązanie:");
         for (int i = 0; i < solution.length; i++) {
             System.out.printf("x_%d = %.6f%n", i + 1, solution[i]);
@@ -28,7 +25,6 @@ public class MetodaIteracjiProstych {
         double[][] h = new double[n][n];
         double[] g = new double[n];
 
-        // Przekształcanie układu równań
         for (int i = 0; i < n; i++) {
             double aii = a[i][i];
             g[i] = b[i] / aii;
@@ -37,7 +33,6 @@ public class MetodaIteracjiProstych {
             }
         }
 
-        // Sprawdzenie warunku zbieżności
         double normaH = 0.0;
         for (int i = 0; i < n; i++) {
             double suma = 0.0;
@@ -54,22 +49,18 @@ public class MetodaIteracjiProstych {
             return null;
         }
 
-        // Proces iteracji
-        double[] x = new double[n]; // Bieżące przybliżenie
-        double[] xPop = new double[n]; // Poprzednie przybliżenie
+        double[] x = new double[n];
+        double[] xPop = new double[n];
         int iter = 0;
         boolean sukces = false;
 
-        // Początkowe przybliżenie (można też przyjąć x = g)
         for (int i = 0; i < n; i++) {
             x[i] = 0.0;
         }
 
         for (iter = 1; iter <= maxIter; iter++) {
-            // Kopiowanie bieżącego przybliżenia do poprzedniego
             System.arraycopy(x, 0, xPop, 0, n);
 
-            // Obliczanie nowego przybliżenia
             for (int i = 0; i < n; i++) {
                 x[i] = g[i];
                 for (int j = 0; j < n; j++) {
@@ -77,7 +68,6 @@ public class MetodaIteracjiProstych {
                 }
             }
 
-            // Sprawdzenie warunku stopu
             double maxRoz = 0.0;
             for (int i = 0; i < n; i++) {
                 double roz = Math.abs(x[i] - xPop[i]);
