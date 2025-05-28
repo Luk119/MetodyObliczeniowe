@@ -10,9 +10,9 @@ public class MetodaIteracjiProstych {
         };
         double[] b = {12.0, 11.0, 9.0};
         double eps = 0.001;
-        int maxIter = 100;
+        int maxI = 100;
 
-        double[] solution = solve(a, b, eps, maxIter);
+        double[] solution = solve(a, b, eps, maxI);
 
         System.out.println("\nRozwiązanie:");
         for (int i = 0; i < solution.length; i++) {
@@ -20,7 +20,7 @@ public class MetodaIteracjiProstych {
         }
     }
 
-    public static double[] solve(double[][] a, double[] b, double eps, int maxIter) {
+    public static double[] solve(double[][] a, double[] b, double eps, int maxI) {
         int n = b.length;
         double[][] h = new double[n][n];
         double[] g = new double[n];
@@ -51,14 +51,14 @@ public class MetodaIteracjiProstych {
 
         double[] x = new double[n];
         double[] xPop = new double[n];
-        int iter = 0;
         boolean sukces = false;
 
         for (int i = 0; i < n; i++) {
             x[i] = 0.0;
         }
 
-        for (iter = 1; iter <= maxIter; iter++) {
+        int iter = 0;
+        for (iter = 1; iter <= maxI; iter++) {
             System.arraycopy(x, 0, xPop, 0, n);
 
             for (int i = 0; i < n; i++) {
