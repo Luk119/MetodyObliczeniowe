@@ -14,7 +14,7 @@ public class MetodaIteracjiProstych {
 
         double[] solution = solve(a, b, eps, maxI);
 
-        System.out.println("\nRozwiązanie:");
+        System.out.println("Rozwiązanie:");
         for (int i = 0; i < solution.length; i++) {
             System.out.printf("x_%d = %.6f%n", i + 1, solution[i]);
         }
