@@ -84,7 +84,7 @@ public class MetodaIteracjiProstych {
         }
 
         if (sukces) {
-            System.out.println("Iteracje zakończone po " + iter + " iteracjach");
+            System.out.println("Zakończono po " + iter + " iteracjach");
             return x;
         } else {
             System.out.println("Przekroczono maksymalną liczbę iteracji");
