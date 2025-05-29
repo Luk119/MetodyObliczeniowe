@@ -4,6 +4,7 @@ public class MetodaIteracjiProstych {
 
     public static void main(String[] args) {
         double[][] a = {
+                //x1, x2, x3
                 {10.0, 1.0, 1.0},
                 {2.0, 8.0, 1.0},
                 {1.0, 2.0, 6.0}
@@ -16,7 +17,7 @@ public class MetodaIteracjiProstych {
 
         System.out.println("Rozwiązanie:");
         for (int i = 0; i < solution.length; i++) {
-            System.out.printf("x_%d = %.6f%n", i + 1, solution[i]);
+            System.out.printf("x_%d = %.10f%n", i + 1, solution[i]);
         }
     }
 
@@ -45,7 +46,7 @@ public class MetodaIteracjiProstych {
         }
 
         if (normaH >= 1.0) {
-            System.out.println("Warunek zbieżności nie jest spełniony (||H|| = " + normaH + ").");
+            System.out.println("Warunek zbieżności nie jest spełniony (||H|| = " + normaH + ")");
             return null;
         }
 
