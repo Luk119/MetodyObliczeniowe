@@ -46,7 +46,7 @@ public class MetodaIteracjiProstych {
         }
 
         if (normaH >= 1.0) {
-            System.out.println("Warunek zbieżności nie jest spełniony (||H|| = " + normaH + ")");
+            System.out.println("Warunek zbieżności nie jest spełniony (|H| = " + normaH + ")");
             return null;
         }
 
